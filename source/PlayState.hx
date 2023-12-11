@@ -3949,6 +3949,18 @@ class PlayState extends MusicBeatState
 		seenCutscene = false;
 
 		#if ACHIEVEMENTS_ALLOWED
+
+		var currentSong:String = Paths.formatToSongPath(SONG.song);
+
+		if (currentSong == 'Asterkillsyouandyoudie')
+			{
+				trace('current song:${currentSong}');
+				ClientPrefs.aster[currentSong] = true;
+				FlxG.save.data.aster = ClientPrefs.aster;
+				FlxG.save.flush();
+			}
+
+
 		if(achievementObj != null) {
 			return;
 		} else {
@@ -3961,23 +3973,13 @@ class PlayState extends MusicBeatState
 				return;
 			}
 		}
-		
-
-		// var currentSong:String = Paths.formatToSongPath(SONG.song);
-
-		// if (currentsong == 'Asterstabsyouandyoudie')
-			// {
-				// trace('currentsong:${currentsong}');
-				// ClientPrefs.aster[currentsong] = true;
-				// FlxG.save.data.aster = ClientPrefs.aster;
-				// FlxG.save.flush();
-			// }
-
-		// if (storyDifficulty == 3 && songMisses == 0)
-		// {
-			// ClientPrefs.aster;
-		// }
 		#end
+		
+		if (storyDifficulty == 3 && songMisses == 0)
+		{
+	        ClientPrefs.aster;
+		};
+		
 
 		//FlxG.switchState(new ResultsScreen());
 
