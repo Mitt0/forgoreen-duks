@@ -3950,17 +3950,6 @@ class PlayState extends MusicBeatState
 
 		#if ACHIEVEMENTS_ALLOWED
 
-		var currentSong:String = Paths.formatToSongPath(SONG.song);
-
-		if (currentSong == 'Asterkillsyouandyoudie')
-			{
-				trace('current song:${currentSong}');
-				ClientPrefs.aster[currentSong] = true;
-				FlxG.save.data.aster = ClientPrefs.aster;
-				FlxG.save.flush();
-			}
-
-
 		if(achievementObj != null) {
 			return;
 		} else {
@@ -3974,11 +3963,6 @@ class PlayState extends MusicBeatState
 			}
 		}
 		#end
-		
-		if (storyDifficulty == 3 && songMisses == 0)
-		{
-	        ClientPrefs.aster;
-		};
 		
 
 		//FlxG.switchState(new ResultsScreen());
@@ -4089,7 +4073,7 @@ class PlayState extends MusicBeatState
 				ReslutState.ratingVar = ratingPTShit; //i want chips
 				MusicBeatState.switchState(new ReslutState());
 
-				FlxG.sound.playMusic(Paths.music('freakyMenu'));
+				FlxG.sound.playMusic(Paths.music('reslutmusic'));
 				changedDifficulty = false;
 			}
 			transitioning = true;
@@ -4209,14 +4193,12 @@ class PlayState extends MusicBeatState
 		rating.loadGraphic(Paths.image(pixelShitPart1 + daRating.image + pixelShitPart2));
 		rating.cameras = [camHUD];
 		rating.screenCenter();
-		rating.x = coolText.x - 40;
-		rating.y -= 60;
+		rating.x = 825;
+		rating.y = 200; 
 		rating.acceleration.y = 550 * playbackRate * playbackRate;
 		rating.velocity.y -= FlxG.random.int(140, 175) * playbackRate;
 		rating.velocity.x -= FlxG.random.int(0, 10) * playbackRate;
 		rating.visible = (!ClientPrefs.hideHud && showRating);
-		rating.x += ClientPrefs.comboOffset[0];
-		rating.y -= ClientPrefs.comboOffset[1];
 
 		var comboSpr:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'combo' + pixelShitPart2));
 		comboSpr.cameras = [camHUD];
@@ -4225,8 +4207,6 @@ class PlayState extends MusicBeatState
 		comboSpr.acceleration.y = FlxG.random.int(200, 300) * playbackRate * playbackRate;
 		comboSpr.velocity.y -= FlxG.random.int(140, 160) * playbackRate;
 		comboSpr.visible = (!ClientPrefs.hideHud && showCombo);
-		comboSpr.x += ClientPrefs.comboOffset[0];
-		comboSpr.y -= ClientPrefs.comboOffset[1];
 		comboSpr.y += 60;
 		comboSpr.velocity.x += FlxG.random.int(1, 10) * playbackRate;
 
@@ -4287,8 +4267,8 @@ class PlayState extends MusicBeatState
 			var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'num' + Std.int(i) + pixelShitPart2));
 			numScore.cameras = [camHUD];
 			numScore.screenCenter();
-			numScore.x = coolText.x + (43 * daLoop) - 90;
-			numScore.y += 80;
+			numScore.x = 825; //Math again
+			numScore.y += 300;
 
 			numScore.x += ClientPrefs.comboOffset[2];
 			numScore.y -= ClientPrefs.comboOffset[3];

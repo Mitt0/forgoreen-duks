@@ -44,7 +44,7 @@ class CreditsState extends MusicBeatState
 		DiscordClient.changePresence("Credits", null);
 		#end
 
-		FlxG.sound.playMusic(Paths.music('LD_Old'), 0.5);
+		FlxG.sound.playMusic(Paths.music('reslutmusic_old'), 0.5);
 
 		persistentUpdate = true;
 		bg = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
@@ -83,8 +83,15 @@ class CreditsState extends MusicBeatState
 		#end
 
 		var pisspoop:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
-			['Romanesque Team'],
-			['Zero', 'A4', 'Desc here', 'https://www.youtube.com/@ItsZeroWow', '8C8C8C'],
+			['Forgorren Duks Team'],
+			['EmeraldMoon',      'sharkuya',              'Touhou is not anime - Emerald (Lead Director, Code Helper)',              'https://www.youtube.com/@ThreeQuartOfficial',                  '09FF00'],
+			['Raven/Truehell',   'hellraven150000',       'I can draw decent boobs - Raven (Co Director, Lead Artist, Animator)',    'https://www.youtube.com/@dontsayflan4315',                     'FF00E6'],
+			['Patche',           'patche',                'Peak - Patche (Co Director, charter)',                                    'https://www.youtube.com/@ShikiPatcheLolz',                     'FF6BEB'],
+			['Zero',             'Zero',                  'I forgor what must I do -Zero (Lead Coder)',                              'https://www.youtube.com/@ItsZeroWow',                          '8C8C8C'],
+			['Karaet',           'karait',                'VS Mima V2?! - Karaet (Lead Musician)',                                   'https://www.youtube.com/@karaet',                              'E60000'],
+			['ChenB',            'chen',                  "I don't believe in human rights - Chen (Lead charter)",                   'https://www.youtube.com/@Chen_Yakumo1010',                     'E65C00'],
+			['HoprW',            'hoprw',                 'I am the angruy pumpmlkin - Hopr (Artist, Musician, Animator)',           'https://www.youtube.com/@glasshopr',                           '2B2B2B'],
+			['KoishiTheOishi',   'person',                'Aya is best 2hu ever - Koishi (Charter, Emotional Support)',              'https://www.youtube.com/@Doremy_Sweet1010',                    'BABABA'],
 	        [''],
 			['Psych Engine Team'],
 			['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',								'https://twitter.com/Shadow_Mario_',	'444444'],

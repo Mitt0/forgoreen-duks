@@ -89,11 +89,6 @@ class ClientPrefs {
 	];
 	public static var defaultKeys:Map<String, Array<FlxKey>> = null;
 
-	public static var aster:Map<String, Bool> = [
-
-		'Asterstabsyouandyoudie' => false,
-	];
-
 	public static function loadDefaultKeys() {
 		defaultKeys = keyBinds.copy();
 		//trace(defaultKeys);

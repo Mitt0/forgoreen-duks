@@ -119,42 +119,50 @@ class ReslutState extends MusicBeatState
 		text123 = new FlxText(50, 200, 500, "Score test: ", 72);
 		text123.setFormat("assets/fonts/cp_and_trans.ttf", 72); //Adds font
 		text123.text = Std.string(scoreVar);
+		text123.color = FlxColor.BLACK;
 		add(text123);
 
 		text123_2 = new FlxText(50, 200 + 200, 500, "Misses test: ", 72); //Misses
 		text123_2.setFormat("assets/fonts/cp_and_trans.ttf", 72);
 		text123_2.text = Std.string(missesVar);
+		text123_2.color = FlxColor.BLACK;
 		add(text123_2);
 
 		text123_3 = new FlxText(50, 200 + 400, 1250, "Rating test: ", 72); //Rating
 		text123_3.setFormat('assets/fonts/cp_and_trans.ttf', 72);
 		text123_3.text = ratingVar;
+		text123_3.color = FlxColor.BLACK;
 		add(text123_3);
 
 		//Normal texts
 		super.create();
 		normaltext = new FlxText(50, 100, 500, 'SCORE:', 72);
 		normaltext.setFormat('assets/fonts/cp_and_trans.ttf', 72);
+		normaltext.color = FlxColor.BLACK;
 		add(normaltext);
 
 		normaltext2 = new FlxText(50, 300, 500, 'MISSES:', 72);
 		normaltext2.setFormat('assets/fonts/cp_and_trans.ttf', 72);
+		normaltext2.color = FlxColor.BLACK;
 		add(normaltext2);
 
 		normaltext3 = new FlxText(50, 500, 500, 'RATING:', 72);
 		normaltext3.setFormat('assets/fonts/cp_and_trans.ttf', 72);
+		normaltext3.color = FlxColor.BLACK;
 		add(normaltext3);
 
 		normaltext4 = new FlxText(800, 650, 500, '(ENTER) Continue ->', 36);
 		normaltext4.setFormat('assets/fonts/cp_and_trans.ttf', 36);
+		normaltext4.color = FlxColor.BLACK;
 		add(normaltext4);
 
 		normaltext5 = new FlxText(800, 600, 500, '<- Restart (RESET)', 36);
 		normaltext5.setFormat('assets/fonts/cp_and_trans.ttf', 36);
+		normaltext5.color = FlxColor.BLACK;
 		add(normaltext5);
 
         //music
-		FlxG.sound.playMusic(Paths.music('freakyMenu'), 1);
+		//FlxG.sound.playMusic(Paths.music('reslutmusic'), 1); //No longer needed because i fixed the problem :skull:
 
 	}
 	

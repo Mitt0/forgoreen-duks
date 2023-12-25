@@ -21,6 +21,8 @@ import WeekData;
 #if MODS_ALLOWED
 import sys.FileSystem;
 #end
+import Sys;
+import lime.app.Application;
 
 using StringTools;
 
@@ -49,6 +51,9 @@ class FreeplayState extends MusicBeatState
 	var bg:FlxSprite;
 	var intendedColor:Int;
 	var colorTween:FlxTween;
+
+	var missingTextBG:FlxSprite; //0.7 shit? :skull:
+	var missingText:FlxText;
 
 	override function create()
 	{
@@ -198,6 +203,17 @@ class FreeplayState extends MusicBeatState
 		text.scrollFactor.set();
 		add(text);
 		super.create();
+
+		missingTextBG = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+		missingTextBG.alpha = 0.6;
+		missingTextBG.visible = false;
+		add(missingTextBG);
+
+		missingText = new FlxText(50, 0, FlxG.width - 100, '', 24);
+		missingText.setFormat(Paths.font('vcr.ttf'), 24, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		missingText.scrollFactor.set();
+		missingText.visible = false;
+		add(missingText);
 	}
 
 	override function closeSubState() {
@@ -311,15 +327,27 @@ class FreeplayState extends MusicBeatState
 			changeDiff(1);
 		else if (upP || downP) changeDiff();
 
-		if (controls.BACK)
-		{
-			persistentUpdate = false;
-			if(colorTween != null) {
+		if (controls.BACK && !missingText.visible)
+			{
+			  persistentUpdate = false;
+			  if(colorTween != null) {
 				colorTween.cancel();
+			  }
+			  FlxG.sound.play(Paths.sound('cancelMenu'));
+			  MusicBeatState.switchState(new MainMenuState());
 			}
-			FlxG.sound.play(Paths.sound('cancelMenu'));
-			MusicBeatState.switchState(new MainMenuState());
-		}
+			
+			else if (controls.BACK && missingText.visible)
+			{
+			  missingText.visible = false;
+			  MusicBeatState.switchState(new FreeplayState());
+			}
+
+			else if (controls.ACCEPT && missingText.visible)
+			{
+				Application.current.window.alert('ACCESS DENIED\nNO EASY MODE FOR YOU!!!', "Uh Oh!");
+				Sys.exit(0);
+			}
 
 		if(ctrl)
 		{
@@ -368,14 +396,30 @@ class FreeplayState extends MusicBeatState
 			}*/
 			trace(poop);
 
-			PlayState.SONG = Song.loadFromJson(poop, songLowercase);
-			PlayState.isStoryMode = false;
-			PlayState.storyDifficulty = curDifficulty;
+			try
+				{
+					PlayState.SONG = Song.loadFromJson(poop, songLowercase);
+					PlayState.isStoryMode = false;
+					PlayState.storyDifficulty = curDifficulty;
+	
+					trace('CURRENT WEEK: ' + WeekData.getWeekFileName());
+					if(colorTween != null) {
+						colorTween.cancel();
+					}
+				}
+				catch(e:Dynamic)
+				{
+					trace('ERROR! $e');
 
-			trace('CURRENT WEEK: ' + WeekData.getWeekFileName());
-			if(colorTween != null) {
-				colorTween.cancel();
-			}
+					missingText.text = 'EEEHHH?! EASY MODO?!';
+					missingText.screenCenter(Y);
+					missingText.visible = true;
+					missingTextBG.visible = true;
+					FlxG.sound.play(Paths.sound('cancelMenu'));
+
+					super.update(elapsed);
+					return;
+				}
 			
 			if (FlxG.keys.pressed.SHIFT){
 				LoadingState.loadAndSwitchState(new ChartingState());

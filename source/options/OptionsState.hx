@@ -59,8 +59,7 @@ class OptionsState extends MusicBeatState
 		DiscordClient.changePresence("Options Menu", null);
 		#end
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
-		bg.color = 0xFFea71fd;
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuBGMagenta')); //SAME FOR THIS ONE TOO??? I SWEAR TO FUCKING GOD I HATE YOU SHADOW MARIO /hj
 		bg.updateHitbox();
 
 		bg.screenCenter();
