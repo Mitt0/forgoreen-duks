@@ -1,4 +1,4 @@
-package; //0, Search for "public function endSong()" on ctrl + f
+package;
 
 import flixel.graphics.FlxGraphic;
 #if desktop
@@ -193,7 +193,7 @@ class PlayState extends MusicBeatState
 	public var timeBar:FlxBar;
 
 	public var ratingsData:Array<Rating> = [];
-	public var duskins:Int = 0;
+	public var duskinss:Int = 0; //Why the fuck is it duskinss? Idfk, i dont remember putting duskinss somewhere
 	public var sicks:Int = 0;
 	public var goods:Int = 0;
 	public var bads:Int = 0;
@@ -358,8 +358,8 @@ class PlayState extends MusicBeatState
 		];
 
 		//Ratings
-		var rating:Rating = new Rating("Duskin'");
-		rating.ratingMod = 1; //Idk wtf is ratingMod, but, i will ask when i have internet
+		var rating:Rating = new Rating("duskins");
+		rating.ratingMod = 1;
 		rating.score = 500;
 		rating.noteSplash = false;
 		ratingsData.push(rating);
@@ -4207,7 +4207,7 @@ class PlayState extends MusicBeatState
 		comboSpr.acceleration.y = FlxG.random.int(200, 300) * playbackRate * playbackRate;
 		comboSpr.velocity.y -= FlxG.random.int(140, 160) * playbackRate;
 		comboSpr.visible = (!ClientPrefs.hideHud && showCombo);
-		comboSpr.y += 60;
+		comboSpr.y += 0;
 		comboSpr.velocity.x += FlxG.random.int(1, 10) * playbackRate;
 
 		insert(members.indexOf(strumLineNotes), rating);
@@ -4264,48 +4264,49 @@ class PlayState extends MusicBeatState
 		}
 		for (i in seperatedScore)
 		{
-			var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'num' + Std.int(i) + pixelShitPart2));
-			numScore.cameras = [camHUD];
-			numScore.screenCenter();
-			numScore.x = 825; //Math again
-			numScore.y += 300;
+			// var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'num' + Std.int(i) + pixelShitPart2));
+			// numScore.cameras = [camHUD];
+			// numScore.screenCenter();
+			// numScore.x = 825; //Math again
+			// numScore.y += 300;
+			// numScore.visible = false;
 
-			numScore.x += ClientPrefs.comboOffset[2];
-			numScore.y -= ClientPrefs.comboOffset[3];
+			// numScore.x += ClientPrefs.comboOffset[2];
+			// numScore.y -= ClientPrefs.comboOffset[3];
 			
-			if (!ClientPrefs.comboStacking)
-				lastScore.push(numScore);
+			// if (!ClientPrefs.comboStacking)
+				// lastScore.push(numScore);
 
-			if (!PlayState.isPixelStage)
-			{
-				numScore.antialiasing = ClientPrefs.globalAntialiasing;
-				numScore.setGraphicSize(Std.int(numScore.width * 0.5));
-			}
-			else
-			{
-				numScore.setGraphicSize(Std.int(numScore.width * daPixelZoom));
-			}
-			numScore.updateHitbox();
+			// if (!PlayState.isPixelStage)
+			// {
+				// numScore.antialiasing = ClientPrefs.globalAntialiasing;
+				// numScore.setGraphicSize(Std.int(numScore.width * 0.5));
+			// }
+			// else
+			// {
+				// numScore.setGraphicSize(Std.int(numScore.width * daPixelZoom));
+			// }
+			// numScore.updateHitbox();
 
-			numScore.acceleration.y = FlxG.random.int(200, 300) * playbackRate * playbackRate;
-			numScore.velocity.y -= FlxG.random.int(140, 160) * playbackRate;
-			numScore.velocity.x = FlxG.random.float(-5, 5) * playbackRate;
-			numScore.visible = !ClientPrefs.hideHud;
+			// numScore.acceleration.y = FlxG.random.int(200, 300) * playbackRate * playbackRate;
+			// numScore.velocity.y -= FlxG.random.int(140, 160) * playbackRate;
+			// numScore.velocity.x = FlxG.random.float(-5, 5) * playbackRate;
+			// numScore.visible = !ClientPrefs.hideHud;
 
 			//if (combo >= 10 || combo == 0)
-			if(showComboNum)
-				insert(members.indexOf(strumLineNotes), numScore);
+			// if(showComboNum)
+				// insert(members.indexOf(strumLineNotes), numScore);
 
-			FlxTween.tween(numScore, {alpha: 0}, 0.2 / playbackRate, {
-				onComplete: function(tween:FlxTween)
-				{
-					numScore.destroy();
-				},
-				startDelay: Conductor.crochet * 0.002 / playbackRate
-			});
+			// FlxTween.tween(numScore, {alpha: 0}, 0.2 / playbackRate, {
+				// onComplete: function(tween:FlxTween)
+				// {
+					// numScore.destroy();
+				// },
+				// startDelay: Conductor.crochet * 0.002 / playbackRate
+			// });
 
-			daLoop++;
-			if(numScore.x > xThing) xThing = numScore.x;
+			// daLoop++;
+			// if(numScore.x > xThing) xThing = numScore.x;
 		}
 		comboSpr.x = xThing + 50;
 		/*
@@ -5260,7 +5261,7 @@ class PlayState extends MusicBeatState
 
 			// Rating FC
 			ratingFC = "";
-			if (duskins > 0) ratingFC = "DFC";
+			if (duskinss > 0) ratingFC = "DFC";
 			if (sicks > 0) ratingFC = "SFC";
 			if (goods > 0) ratingFC = "GFC";
 			if (bads > 0 || shits > 0) ratingFC = "FC";

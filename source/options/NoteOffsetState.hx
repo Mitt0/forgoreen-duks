@@ -468,7 +468,7 @@ class NoteOffsetState extends MusicBeatState
 		beatText.visible = !onComboMenu;
 
 		if(onComboMenu)
-			changeModeText.text = '< Combo Offset (Press Accept to Switch) >';
+			changeModeText.text = '< You cannot change the offset, Let us know if this is a bad idea (Press Accept to Switch) >';
 		else
 			changeModeText.text = '< Note/Beat Delay (Press Accept to Switch) >';
 

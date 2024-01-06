@@ -170,6 +170,7 @@ class ReslutState extends MusicBeatState
 	{
 		if (controls.ACCEPT)
 			MusicBeatState.switchState(new MainMenuState());
+		   
 		
 		if (controls.RESET)
 			LoadingState.loadAndSwitchState(new PlayState());

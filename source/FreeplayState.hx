@@ -38,6 +38,7 @@ class FreeplayState extends MusicBeatState
 	var scoreBG:FlxSprite;
 	var scoreText:FlxText;
 	var diffText:FlxText;
+	var borderForDiffText:FlxSprite;
 	var lerpScore:Int = 0;
 	var lerpRating:Float = 0;
 	var intendedScore:Int = 0;
@@ -54,6 +55,9 @@ class FreeplayState extends MusicBeatState
 
 	var missingTextBG:FlxSprite; //0.7 shit? :skull:
 	var missingText:FlxText;
+
+	var arrowLeft:FlxText;
+	var arrowRight:FlxText;
 
 	override function create()
 	{
@@ -114,11 +118,19 @@ class FreeplayState extends MusicBeatState
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
 
+		arrowLeft = new FlxText(50, 0, 30, '<', 50);
+		arrowLeft.screenCenter(Y);
+		add(arrowLeft);
+
+		arrowRight = new FlxText(1200, 0, 30, '>', 50);
+		arrowRight.screenCenter(Y);
+		add(arrowRight);
+
 		for (i in 0...songs.length)
 		{
 			var songText:Alphabet = new Alphabet(90, 320, songs[i].songName, true);
 			songText.isMenuItem = true;
-			songText.targetY = i - curSelected;
+			songText.x = i - curSelected;
 			grpSongs.add(songText);
 
 			var maxWidth = 980;
@@ -130,11 +142,15 @@ class FreeplayState extends MusicBeatState
 
 			Paths.currentModDirectory = songs[i].folder;
 			var icon:HealthIcon = new HealthIcon(songs[i].songCharacter);
-			icon.sprTracker = songText;
-
+			// icon.sprTracker = songText;
+			icon.screenCenter(X);
+			icon.y = songText.y = 100;
 			// using a FlxGroup is too much fuss!
 			iconArray.push(icon);
+			// if (songs[i].frame != 0)
+			// icon.animation.curAnim.curFrame = songs[i].frame;
 			add(icon);
+
 
 			// songText.x += 40;
 			// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
@@ -149,9 +165,15 @@ class FreeplayState extends MusicBeatState
 		scoreBG.alpha = 0.6;
 		add(scoreBG);
 
-		diffText = new FlxText(scoreText.x, scoreText.y + 36, 0, "", 24);
-		diffText.font = scoreText.font;
+		borderForDiffText = new FlxSprite().loadGraphic(Paths.image('transparentBorder'));
+		borderForDiffText.x = 450;
+		borderForDiffText.y = 475;
+		add(borderForDiffText);
+
+		diffText = new FlxText(scoreText.x, 500, 0, "", 50);
+		diffText.font = ('assets/fonts/Deignot-DL3R.ttf');
 		add(diffText);
+		diffText.x = 500;
 
 		add(scoreText);
 
@@ -275,11 +297,13 @@ class FreeplayState extends MusicBeatState
 			ratingSplit[1] += '0';
 		}
 
-		scoreText.text = 'PERSONAL BEST: ' + lerpScore + ' (' + ratingSplit.join('.') + '%)';
+		scoreText.text = 'YOUR BEST: ' + lerpScore + ' (' + ratingSplit.join('.') + '%)';
 		positionHighscore();
 
-		var upP = controls.UI_UP_P;
-		var downP = controls.UI_DOWN_P;
+		var upP = controls.UI_UP_P; 
+		var downP = controls.UI_DOWN_P; 
+		var leftP = controls.UI_LEFT_P;
+		var rightP = controls.UI_RIGHT_P;
 		var accepted = controls.ACCEPT;
 		var space = FlxG.keys.justPressed.SPACE;
 		var ctrl = FlxG.keys.justPressed.CONTROL;
@@ -289,18 +313,18 @@ class FreeplayState extends MusicBeatState
 
 		if(songs.length > 1)
 		{
-			if (upP)
+			if (leftP)
 			{
 				changeSelection(-shiftMult);
 				holdTime = 0;
 			}
-			if (downP)
+			if (rightP)
 			{
 				changeSelection(shiftMult);
 				holdTime = 0;
 			}
 
-			if(controls.UI_DOWN || controls.UI_UP)
+			if(controls.UI_LEFT || controls.UI_RIGHT)
 			{
 				var checkLastHold:Int = Math.floor((holdTime - 0.5) * 10);
 				holdTime += elapsed;
@@ -321,11 +345,14 @@ class FreeplayState extends MusicBeatState
 			}
 		}
 
-		if (controls.UI_LEFT_P)
+		if (controls.UI_DOWN_P)
 			changeDiff(-1);
-		else if (controls.UI_RIGHT_P)
+		else if (controls.UI_UP_P)
 			changeDiff(1);
-		else if (upP || downP) changeDiff();
+		else if (rightP || leftP){
+			curDifficulty = 1;
+			changeDiff();
+		}
 
 		if (controls.BACK && !missingText.visible)
 			{
@@ -465,8 +492,18 @@ class FreeplayState extends MusicBeatState
 		#end
 
 		PlayState.storyDifficulty = curDifficulty;
-		diffText.text = '< ' + CoolUtil.difficultyString() + ' >';
+		diffText.text = '^\n ' + CoolUtil.difficultyString() + '\nv';
 		positionHighscore();
+
+		if (curDifficulty == 0) //Easy Color
+			diffText.color = 0xFF26E600;
+		else if (curDifficulty == 1) //Normal Color
+			diffText.color = 0xFF0700D9;
+		else if (curDifficulty == 2) //Hard Color
+			diffText.color = 0xFFCC00A7;
+		else if (curDifficulty == 3){ //Lunatic/Aster Color
+			diffText.color = 0xFFCC0000;
+		}
 	}
 
 	function changeSelection(change:Int = 0, playSound:Bool = true)
@@ -504,20 +541,20 @@ class FreeplayState extends MusicBeatState
 
 		for (i in 0...iconArray.length)
 		{
-			iconArray[i].alpha = 0.6;
+			iconArray[i].alpha = 0;
 		}
 
 		iconArray[curSelected].alpha = 1;
 
 		for (item in grpSongs.members)
 		{
-			item.targetY = bullShit - curSelected;
+			item.x = bullShit - curSelected;
 			bullShit++;
 
-			item.alpha = 0.6;
+			item.alpha = 0;
 			// item.setGraphicSize(Std.int(item.width * 0.8));
 
-			if (item.targetY == 0)
+			if (item.x == 0)
 			{
 				item.alpha = 1;
 				// item.setGraphicSize(Std.int(item.width));
@@ -573,8 +610,8 @@ class FreeplayState extends MusicBeatState
 
 		scoreBG.scale.x = FlxG.width - scoreText.x + 6;
 		scoreBG.x = FlxG.width - (scoreBG.scale.x / 2);
-		diffText.x = Std.int(scoreBG.x + (scoreBG.width / 2));
-		diffText.x -= diffText.width / 2;
+		// diffText.x = Std.int(scoreBG.x + (scoreBG.width / 2));
+		// diffText.x -= diffText.width / 2;
 	}
 }
 

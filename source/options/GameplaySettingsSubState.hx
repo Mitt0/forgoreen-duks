@@ -101,6 +101,17 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		option.maxValue = 30;
 		addOption(option);
 
+		var option:Option = new Option('Duskin Hit Window',
+            'Even if you change it,\nYou will still suffer anyway',
+			'duskinWindow',
+			'int',
+		    3);
+		option.displayFormat = '%vms';
+		option.scrollSpeed = 5;
+		option.minValue = 1;
+		option.maxValue = 5;
+		addOption(option);
+
 		var option:Option = new Option('Sick! Hit Window',
 			'Changes the amount of time you have\nfor hitting a "Sick!" in milliseconds.',
 			'sickWindow',
