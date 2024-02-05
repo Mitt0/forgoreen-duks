@@ -169,8 +169,10 @@ class ReslutState extends MusicBeatState
 	override function update(elapsed:Float) 
 	{
 		if (controls.ACCEPT)
-			MusicBeatState.switchState(new MainMenuState());
-		   
+			{
+		        MusicBeatState.switchState(new MainMenuState());
+		        FlxG.sound.playMusic(Paths.music('freakyMenu'));
+			}
 		
 		if (controls.RESET)
 			LoadingState.loadAndSwitchState(new PlayState());

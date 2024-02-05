@@ -209,6 +209,7 @@ class PlayState extends MusicBeatState
 	//Gameplay settings
 	public var healthGain:Float = 1;
 	public var healthLoss:Float = 1;
+	public var sfcOrDie:Bool = false;
 	public var instakillOnMiss:Bool = false;
 	public var cpuControlled:Bool = false;
 	public var practiceMode:Bool = false;
@@ -396,6 +397,7 @@ class PlayState extends MusicBeatState
 		// Gameplay settings
 		healthGain = ClientPrefs.getGameplaySetting('healthgain', 1);
 		healthLoss = ClientPrefs.getGameplaySetting('healthloss', 1);
+		sfcOrDie = ClientPrefs.getGameplaySetting('sfc_or_die', false);
 		instakillOnMiss = ClientPrefs.getGameplaySetting('instakill', false);
 		practiceMode = ClientPrefs.getGameplaySetting('practice', false);
 		cpuControlled = ClientPrefs.getGameplaySetting('botplay', false);
@@ -1157,7 +1159,7 @@ class PlayState extends MusicBeatState
 		add(iconP2);
 		reloadHealthBarColors();
 
-		scoreTxt = new FlxText(0, healthBarBG.y + 36, FlxG.width, "", 20);
+		scoreTxt = new FlxText(0, healthBarBG.y + 60, FlxG.width, "", 20);
 		scoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
@@ -3953,9 +3955,7 @@ class PlayState extends MusicBeatState
 		if(achievementObj != null) {
 			return;
 		} else {
-			var achieve:String = checkForAchievement(['week1_nomiss', 'week2_nomiss', 'week3_nomiss', 'week4_nomiss',
-				'week5_nomiss', 'week6_nomiss', 'week7_nomiss', 'ur_bad',
-				'ur_good', 'hype', 'two_keys', 'toastie', 'debugger']);
+			var achieve:String = checkForAchievement(['Asterstab', 'Asterkill', 'Killaster']);
 
 			if(achieve != null) {
 				startAchievement(achieve);
@@ -4555,6 +4555,11 @@ class PlayState extends MusicBeatState
 			doDeathCheck(true);
 		}
 
+		if (sfcOrDie)
+		{
+			health = 0;
+		}
+
 		//For testing purposes
 		//trace(daNote.missHealth);
 		songMisses++;
@@ -4581,6 +4586,11 @@ class PlayState extends MusicBeatState
 	function noteMissPress(direction:Int = 1):Void //You pressed a key when there was no notes to press for this key
 	{
 		if(ClientPrefs.ghostTapping) return; //fuck it
+
+		if (sfcOrDie)
+			{
+			  health = 0;
+			}
 
 		if (!boyfriend.stunned)
 		{
@@ -4721,6 +4731,11 @@ class PlayState extends MusicBeatState
 				popUpScore(note);
 			}
 			health += note.hitHealth * healthGain;
+
+			if ((note.rating == 'good' || note.rating == 'bad' || note.rating == 'shit') && sfcOrDie)
+				{
+				  health = 0;
+				}
 
 			if(!note.noAnimation) {
 				var animToPlay:String = singAnimations[Std.int(Math.abs(note.noteData))];
@@ -5332,6 +5347,33 @@ class PlayState extends MusicBeatState
 						if(Paths.formatToSongPath(SONG.song) == 'test' && !usedPractice) {
 							unlock = true;
 						}
+						case 'Asterstab':
+							if(storyDifficulty == 2 && !usedPractice)
+								{
+									switch(curSong)
+									{
+										case 'Asterstabsyouandyoudie':
+											if(achievementName == 'Asterstab') unlock = true;
+									}
+								}
+						case 'Asterskill':
+							if(storyDifficulty == 3 && !usedPractice)
+								{
+									switch(curSong)
+									{
+										case 'Asterstabsyouandyoudie':
+											if(achievementName == 'Asterkill') unlock = true;
+									}
+								}
+						case 'Killaster':
+							if(storyDifficulty == 2 && !usedPractice && songMisses < 0)
+								{
+									switch(curSong)
+									{
+										case 'Asterstabsyouandyoudie':
+											if(achievementName == 'Killaster') unlock = true;
+									}
+								}
 				}
 
 				if(unlock) {
