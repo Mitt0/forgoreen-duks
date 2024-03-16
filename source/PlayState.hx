@@ -5360,7 +5360,7 @@ class PlayState extends MusicBeatState
 						if(Paths.formatToSongPath(SONG.song) == 'test' && !usedPractice) {
 							unlock = true;
 						}
-					case 'Asterstab':
+					case 'Asterstab': //Works
 						if(storyDifficulty == 2 && !usedPractice)
 							{
 						    	switch(curSong)
@@ -5369,7 +5369,7 @@ class PlayState extends MusicBeatState
 										if(achievementName == 'Asterstab') unlock = true;
 								}
 							}
-					case 'Asterskill':
+					case 'Asterkill': //Should work
 						if(storyDifficulty == 3 && !usedPractice)
 							{
 	    						switch(curSong)
@@ -5378,7 +5378,7 @@ class PlayState extends MusicBeatState
 										if(achievementName == 'Asterkill') unlock = true;
 								}
 							}
-					case 'Killaster':
+					case 'Killaster': //Should work
 						if(storyDifficulty == 3 && !usedPractice && songMisses < 1)
 							{
 								switch(curSong)
@@ -5387,7 +5387,7 @@ class PlayState extends MusicBeatState
 										if(achievementName == 'Killaster') unlock = true;
 								}
 							}
-				    case 'yogurt':
+				    case 'yogurt': //Works
 					    if(!usedPractice)
 						    {
 							    switch(curSong)
@@ -5396,7 +5396,7 @@ class PlayState extends MusicBeatState
 									    if(achievementName == 'yogurt') unlock = true;
 								}
 							}
-					case 'yogurtFC':
+					case 'yogurtFC': //Works
 						if(!usedPractice && songMisses < 1)
 							{
 								switch(curSong)
@@ -5405,7 +5405,7 @@ class PlayState extends MusicBeatState
 										if(achievementName == "yogurtFC") unlock = true;
 								}
 							}
-					case 'ld':
+					case 'ld': //Works
 						if(storyDifficulty == 2  && !usedPractice)
 							{
 								switch(curSong)
@@ -5414,7 +5414,7 @@ class PlayState extends MusicBeatState
 									    if(achievementName == 'ld') unlock = true;
 								}
 							}
-					case 'ldLunatic':
+					case 'ldLunatic': //Works
 						if(storyDifficulty == 3 && !usedPractice)
 							{
 								switch(curSong)
@@ -5423,8 +5423,8 @@ class PlayState extends MusicBeatState
 										if(achievementName == 'ldLunatic') unlock = true;
 								}
 							}
-					case 'ldLunFC':
-						if(storyDifficulty == 3 && !usedPractice && songMisses < 0)
+					case 'ldLunFC': //Should work
+						if(storyDifficulty == 3 && !usedPractice && songMisses < 1)
 							{
 								switch(curSong)
 								{
