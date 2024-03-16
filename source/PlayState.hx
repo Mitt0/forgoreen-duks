@@ -1404,6 +1404,8 @@ class PlayState extends MusicBeatState
 		Paths.clearUnusedMemory();
 		
 		CustomFadeTransition.nextCamera = camOther;
+
+		trace(storyDifficulty);
 	}
 
 	#if (!flash && sys)
@@ -5369,7 +5371,7 @@ class PlayState extends MusicBeatState
 										if(achievementName == 'Asterstab') unlock = true;
 								}
 							}
-					case 'Asterkill': //Should work
+					case 'Asterkill': //Works
 						if(storyDifficulty == 3 && !usedPractice)
 							{
 	    						switch(curSong)
@@ -5378,7 +5380,7 @@ class PlayState extends MusicBeatState
 										if(achievementName == 'Asterkill') unlock = true;
 								}
 							}
-					case 'Killaster': //Should work
+					case 'Killaster': //Works
 						if(storyDifficulty == 3 && !usedPractice && songMisses < 1)
 							{
 								switch(curSong)
@@ -5423,7 +5425,7 @@ class PlayState extends MusicBeatState
 										if(achievementName == 'ldLunatic') unlock = true;
 								}
 							}
-					case 'ldLunFC': //Should work
+					case 'ldLunFC': //Wprks
 						if(storyDifficulty == 3 && !usedPractice && songMisses < 1)
 							{
 								switch(curSong)
