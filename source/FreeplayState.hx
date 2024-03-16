@@ -56,6 +56,8 @@ class FreeplayState extends MusicBeatState
 	var missingTextBG:FlxSprite; //0.7 shit? :skull:
 	var missingText:FlxText;
 
+	var difficultyDesc:FlxText;
+
 	var arrowLeft:FlxText;
 	var arrowRight:FlxText;
 
@@ -160,6 +162,10 @@ class FreeplayState extends MusicBeatState
 
 		scoreText = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
 		scoreText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
+
+		difficultyDesc = new FlxText(900, 500, 500, '', 24);
+		difficultyDesc.setFormat(Paths.font('assets/fonts/Deignot-DL3R.ttf'), 24);
+		add(difficultyDesc);
 
 		scoreBG = new FlxSprite(scoreText.x - 6, 0).makeGraphic(1, 66, 0xFF000000);
 		scoreBG.alpha = 0.6;
@@ -438,7 +444,7 @@ class FreeplayState extends MusicBeatState
 				{
 					trace('ERROR! $e');
 
-					missingText.text = 'EEEHHH?! EASY MODO?!';
+					missingText.text = 'EEEHHH?! EASY MODO?!\n[Backspace to go back!]';
 					missingText.screenCenter(Y);
 					missingText.visible = true;
 					missingTextBG.visible = true;
@@ -497,13 +503,34 @@ class FreeplayState extends MusicBeatState
 
 		if (curDifficulty == 0) //Easy Color
 			diffText.color = 0xFF26E600;
-		else if (curDifficulty == 1) //Normal Color
+		else if (curDifficulty == 1) //Casual Color
 			diffText.color = 0xFF0700D9;
 		else if (curDifficulty == 2) //Hard Color
 			diffText.color = 0xFFCC00A7;
 		else if (curDifficulty == 3){ //Lunatic/Aster Color
 			diffText.color = 0xFFCC0000;
 		}
+		
+		
+        // Difficulty Descriptions
+		if (curDifficulty == 0){ //Easy Mode
+			difficultyDesc.text = "Suited for no one, and I mean NO ONE";
+		}
+		else if (curDifficulty == 1){ //Casual Mode
+			difficultyDesc.text = "Suited for casual players who just wanna have fun";
+		}
+		else if (curDifficulty == 2){ //Hard Mode
+			difficultyDesc.text = "Suited for Hardcore players who wants some challenge";
+		}
+	//	else if (curDifficulty == 2 && curSong == "Asterstabsyouandyoudie") //Aster Normal Mode
+		//	difficultyDesc.text = "Good luck, you will need it"; 
+		else if (curDifficulty == 3){ //Lunatic Mode
+			difficultyDesc.text = "Suited for God-like players who never seen the sun\nWhat is the sun anyway?";	
+		}
+		//else if (curDifficulty == 3 && curSong == "Asterstabsyouandyoudie"){ //Aster Mode
+		//	difficultyDesc.text = "ASTER WILL KILL YOU!!!";
+		//  difficultyDesc.color = 0xFFCC0000;
+		//}
 	}
 
 	function changeSelection(change:Int = 0, playSound:Bool = true)

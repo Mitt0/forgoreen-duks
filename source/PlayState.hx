@@ -3955,7 +3955,7 @@ class PlayState extends MusicBeatState
 		if(achievementObj != null) {
 			return;
 		} else {
-			var achieve:String = checkForAchievement(['Asterstab', 'Asterkill', 'Killaster']);
+			var achieve:String = checkForAchievement(['Asterstab', 'Asterkill', 'Killaster', 'yogurt', 'yogurtFC', 'ld', 'ldLunatic', 'ldLunFC']);
 
 			if(achieve != null) {
 				startAchievement(achieve);
@@ -4193,7 +4193,7 @@ class PlayState extends MusicBeatState
 		rating.loadGraphic(Paths.image(pixelShitPart1 + daRating.image + pixelShitPart2));
 		rating.cameras = [camHUD];
 		rating.screenCenter();
-		rating.x = 825;
+		rating.x = 825; //this both is for Down Scroll
 		rating.y = 200; 
 		rating.acceleration.y = 550 * playbackRate * playbackRate;
 		rating.velocity.y -= FlxG.random.int(140, 175) * playbackRate;
@@ -4231,6 +4231,19 @@ class PlayState extends MusicBeatState
 			comboSpr.setGraphicSize(Std.int(comboSpr.width * daPixelZoom * 0.85));
 		}
 
+		if (!ClientPrefs.downScroll)
+		{
+			rating.y = 300;
+		}
+		else if (ClientPrefs.downScroll && ClientPrefs.middleScroll)
+		{
+			rating.x = 500;
+		}
+		else if (ClientPrefs.middleScroll && !ClientPrefs.downScroll)
+		{
+			rating.x = 500;
+			rating.y = 300;
+		}
 		comboSpr.updateHitbox();
 		rating.updateHitbox();
 
@@ -5347,33 +5360,78 @@ class PlayState extends MusicBeatState
 						if(Paths.formatToSongPath(SONG.song) == 'test' && !usedPractice) {
 							unlock = true;
 						}
-						case 'Asterstab':
-							if(storyDifficulty == 2 && !usedPractice)
+					case 'Asterstab':
+						if(storyDifficulty == 2 && !usedPractice)
+							{
+						    	switch(curSong)
 								{
-									switch(curSong)
-									{
-										case 'Asterstabsyouandyoudie':
-											if(achievementName == 'Asterstab') unlock = true;
-									}
+									case 'Asterstabsyouandyoudie':
+										if(achievementName == 'Asterstab') unlock = true;
 								}
-						case 'Asterskill':
-							if(storyDifficulty == 3 && !usedPractice)
+							}
+					case 'Asterskill':
+						if(storyDifficulty == 3 && !usedPractice)
+							{
+	    						switch(curSong)
 								{
-									switch(curSong)
-									{
-										case 'Asterstabsyouandyoudie':
-											if(achievementName == 'Asterkill') unlock = true;
-									}
+									case 'Asterstabsyouandyoudie':
+										if(achievementName == 'Asterkill') unlock = true;
 								}
-						case 'Killaster':
-							if(storyDifficulty == 2 && !usedPractice && songMisses < 0)
+							}
+					case 'Killaster':
+						if(storyDifficulty == 3 && !usedPractice && songMisses < 1)
+							{
+								switch(curSong)
 								{
-									switch(curSong)
-									{
-										case 'Asterstabsyouandyoudie':
-											if(achievementName == 'Killaster') unlock = true;
-									}
+									case 'Asterstabsyouandyoudie':
+										if(achievementName == 'Killaster') unlock = true;
 								}
+							}
+				    case 'yogurt':
+					    if(!usedPractice)
+						    {
+							    switch(curSong)
+							    {
+								    case 'frozenyogurt-adventure':
+									    if(achievementName == 'yogurt') unlock = true;
+								}
+							}
+					case 'yogurtFC':
+						if(!usedPractice && songMisses < 1)
+							{
+								switch(curSong)
+								{
+									case 'frozenyogurt-adventure':
+										if(achievementName == "yogurtFC") unlock = true;
+								}
+							}
+					case 'ld':
+						if(storyDifficulty == 2  && !usedPractice)
+							{
+								switch(curSong)
+								{
+									case 'last-departure':
+									    if(achievementName == 'ld') unlock = true;
+								}
+							}
+					case 'ldLunatic':
+						if(storyDifficulty == 3 && !usedPractice)
+							{
+								switch(curSong)
+								{
+									case 'last-departure':
+										if(achievementName == 'ldLunatic') unlock = true;
+								}
+							}
+					case 'ldLunFC':
+						if(storyDifficulty == 3 && !usedPractice && songMisses < 0)
+							{
+								switch(curSong)
+								{
+									case 'last-departure':
+										if(achievementName == 'ldLunFC') unlock = true;
+								}
+							}
 				}
 
 				if(unlock) {

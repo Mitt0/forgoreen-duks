@@ -11,9 +11,14 @@ using StringTools;
 
 class Achievements {
 	public static var achievementsStuff:Array<Dynamic> = [ //Name, Description, Achievement save tag, Hidden achievement
-		['Aster Stabs You',    'Kill Aster in Normal Mode',                        'Asterstab', false],
-		['Aster Kills You',    'Kill Aster in Aster Mode',                         'Asterkill', false],
-		['You Killed Aster',   'Absolutely Obliterate (FC) Aster in Aster Mode',   'Killaster', false]
+		['Aster Stabs You',      'Kill Aster in Normal Mode',                        'Asterstab', false],
+		['Aster Kills You',      'Kill Aster in Aster Mode',                         'Asterkill', false],
+		['You Killed Aster',     'Absolutely Obliterate (FC) Aster in Aster Mode',   'Killaster', false],
+		['Yummy Yogurt Yum Yum', 'Yogurt is good for your health',                   'yogurt',    false],
+		['Penicillum',           'Yogurt has expired',                               'yogurtFC',  false],
+		['The Last Departure',   'Confront Eiki in Hard Mode',                       'ld',        false],
+		['The Last Arrival',     'Confront Eiki in Lunatic Mode',                    'ldLunatic', false],
+		['The Opening Advent',   'Confront Eiki Flawlessly in Lunatic Mode',         'ldLunFC',   false]
 	];
 	public static var achievementsMap:Map<String, Bool> = new Map<String, Bool>();
 
