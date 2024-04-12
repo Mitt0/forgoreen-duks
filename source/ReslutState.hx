@@ -117,48 +117,48 @@ class ReslutState extends MusicBeatState
 
 		super.create(); //scores
 		text123 = new FlxText(50, 200, 500, "Score test: ", 72);
-		text123.setFormat("assets/fonts/cp_and_trans.ttf", 72); //Adds font
+		text123.setFormat('assets/fonts/Deignot-DL3R.ttf', 72); //Adds font
 		text123.text = Std.string(scoreVar);
-		text123.color = FlxColor.BLACK;
+		text123.color = FlxColor.RED;
 		add(text123);
 
 		text123_2 = new FlxText(50, 200 + 200, 500, "Misses test: ", 72); //Misses
-		text123_2.setFormat("assets/fonts/cp_and_trans.ttf", 72);
+		text123_2.setFormat('assets/fonts/Deignot-DL3R.ttf', 72);
 		text123_2.text = Std.string(missesVar);
-		text123_2.color = FlxColor.BLACK;
+		text123_2.color = FlxColor.RED;
 		add(text123_2);
 
 		text123_3 = new FlxText(50, 200 + 400, 1250, "Rating test: ", 72); //Rating
-		text123_3.setFormat('assets/fonts/cp_and_trans.ttf', 72);
+		text123_3.setFormat('assets/fonts/Deignot-DL3R.ttf', 72);
 		text123_3.text = ratingVar;
-		text123_3.color = FlxColor.BLACK;
+		text123_3.color = FlxColor.RED;
 		add(text123_3);
 
 		//Normal texts
 		super.create();
 		normaltext = new FlxText(50, 100, 500, 'SCORE:', 72);
-		normaltext.setFormat('assets/fonts/cp_and_trans.ttf', 72);
-		normaltext.color = FlxColor.BLACK;
+		normaltext.setFormat('assets/fonts/Deignot-DL3R.ttf', 72);
+		normaltext.color = FlxColor.RED;
 		add(normaltext);
 
 		normaltext2 = new FlxText(50, 300, 500, 'MISSES:', 72);
-		normaltext2.setFormat('assets/fonts/cp_and_trans.ttf', 72);
-		normaltext2.color = FlxColor.BLACK;
+		normaltext2.setFormat('assets/fonts/Deignot-DL3R.ttf', 72);
+		normaltext2.color = FlxColor.RED;
 		add(normaltext2);
 
 		normaltext3 = new FlxText(50, 500, 500, 'RATING:', 72);
-		normaltext3.setFormat('assets/fonts/cp_and_trans.ttf', 72);
-		normaltext3.color = FlxColor.BLACK;
+		normaltext3.setFormat('assets/fonts/Deignot-DL3R.ttf', 72);
+		normaltext3.color = FlxColor.RED;
 		add(normaltext3);
 
 		normaltext4 = new FlxText(800, 650, 500, '(ENTER) Continue ->', 36);
-		normaltext4.setFormat('assets/fonts/cp_and_trans.ttf', 36);
-		normaltext4.color = FlxColor.BLACK;
+		normaltext4.setFormat('assets/fonts/Deignot-DL3R.ttf', 36);
+		normaltext4.color = FlxColor.RED;
 		add(normaltext4);
 
 		normaltext5 = new FlxText(800, 600, 500, '<- Restart (RESET)', 36);
-		normaltext5.setFormat('assets/fonts/cp_and_trans.ttf', 36);
-		normaltext5.color = FlxColor.BLACK;
+		normaltext5.setFormat('assets/fonts/Deignot-DL3R.ttf', 36);
+		normaltext5.color = FlxColor.RED;
 		add(normaltext5);
 
         //music
