@@ -518,14 +518,25 @@ class FreeplayState extends MusicBeatState
 		    case 0: //Easy Mode
 			    difficultyDesc.color = 0xFFFFFFFF;
 			    difficultyDesc.text = "Suited for no one, and I mean NO ONE";
+			if (songs[curSelected].songName == "deadeye"){ //Deadeye easy
+				difficultyDesc.color = 0xFFFFFFFF;
+				difficultyDesc.text = "[DATA REDACTED, CANNOT ACCESS]";
+			}
 	    	
 		    case 1: //Casual Mode
 			    difficultyDesc.color = 0xFFFFFFFF;
 		        difficultyDesc.text = "Suited for Casual players who just wanna play the song without stress";
-		    
+			if (songs[curSelected].songName == "deadeye"){ //Deadeye Casual
+				difficultyDesc.color = 0xFFFFFFFF;
+				difficultyDesc.text = "[DATA REDACTED, CANNOT ACCESS]";
+			}
 	    	case 2: //Hard Mode
 			    difficultyDesc.color = 0xFFFFFFFF;
 			    difficultyDesc.text = "Suited for Hardcore players who wants some challenge";
+			if (songs[curSelected].songName == "deadeye"){ //Deadeye Hardcore
+				difficultyDesc.color = 0xFFFFFFFF;
+				difficultyDesc.text = "[DATA ACCESS HAS BEEN FOUND, PLAY?]";
+			}
 	    	
 	    	if (songs[curSelected].songName == "asterstabsyouandyoudie"){ //Aster Normal Mode
 				difficultyDesc.color = 0xFFFFFFFF;
