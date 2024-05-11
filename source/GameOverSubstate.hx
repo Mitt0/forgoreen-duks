@@ -9,6 +9,8 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
+import hxcodec.VideoHandler as MP4Handler;
+import sys.FileSystem;
 
 class GameOverSubstate extends MusicBeatSubstate
 {
@@ -17,6 +19,7 @@ class GameOverSubstate extends MusicBeatSubstate
 	var camFollowPos:FlxObject;
 	var updateCamera:Bool = false;
 	var playingDeathSound:Bool = false;
+	var deadEyeActivated:Bool = false;
 
 	var stageSuffix:String = "";
 
@@ -40,6 +43,11 @@ class GameOverSubstate extends MusicBeatSubstate
 		PlayState.instance.callOnLuas('onGameOverStart', []);
 
 		super.create();
+		
+		if (!deadEyeActivated)
+		{
+			FlxG.sound.play(Paths.sound(deathSoundName));
+		}
 	}
 
 	public function new(x:Float, y:Float, camX:Float, camY:Float)
@@ -50,13 +58,19 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		Conductor.songPosition = 0;
 
+		if (PlayState.instance.curSong == 'deadeye')
+		{
+			deadEyeActivated = true;
+			PlayState.instance.startVideo('deadeyedotexe');
+			return;
+		}
+
 		boyfriend = new Boyfriend(x, y, characterName);
 		boyfriend.x += boyfriend.positionArray[0];
 		boyfriend.y += boyfriend.positionArray[1];
 		add(boyfriend);
 
 		camFollow = new FlxPoint(boyfriend.getGraphicMidpoint().x, boyfriend.getGraphicMidpoint().y);
-
 		FlxG.sound.play(Paths.sound(deathSoundName));
 		Conductor.changeBPM(100);
 		// FlxG.camera.followLerp = 1;
@@ -76,18 +90,21 @@ class GameOverSubstate extends MusicBeatSubstate
 	{
 		super.update(elapsed);
 
+		if (PlayState.instance.curSong == 'deadeye')
+			return;
+
 		PlayState.instance.callOnLuas('onUpdate', [elapsed]);
 		if(updateCamera) {
 			var lerpVal:Float = CoolUtil.boundTo(elapsed * 0.6, 0, 1);
 			camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
 		}
 
-		if (controls.ACCEPT)
+		if (controls.ACCEPT && !deadEyeActivated)
 		{
 			endBullshit();
 		}
 
-		if (controls.BACK)
+		if (controls.BACK && !deadEyeActivated)
 		{
 			FlxG.sound.music.stop();
 			PlayState.deathCounter = 0;
@@ -104,7 +121,7 @@ class GameOverSubstate extends MusicBeatSubstate
 			PlayState.instance.callOnLuas('onGameOverConfirm', [false]);
 		}
 
-		if (boyfriend.animation.curAnim != null && boyfriend.animation.curAnim.name == 'firstDeath')
+		if (boyfriend.animation.curAnim != null && boyfriend.animation.curAnim.name == 'firstDeath' && boyfriend != null)
 		{
 			if(boyfriend.animation.curAnim.curFrame >= 12 && !isFollowingAlready)
 			{
@@ -156,7 +173,10 @@ class GameOverSubstate extends MusicBeatSubstate
 
 	function coolStartDeath(?volume:Float = 1):Void
 	{
-		FlxG.sound.playMusic(Paths.music(loopSoundName), volume);
+		if (!deadEyeActivated)
+		{
+		    FlxG.sound.playMusic(Paths.music(loopSoundName), volume);
+		}
 	}
 
 	function endBullshit():Void
@@ -177,4 +197,36 @@ class GameOverSubstate extends MusicBeatSubstate
 			PlayState.instance.callOnLuas('onGameOverConfirm', [true]);
 		}
 	}
+
+	public function startVideo(name:String)
+		{
+			#if VIDEOS_ALLOWED
+			var filepath:String = Paths.video(name);
+			#if sys
+			if(!FileSystem.exists(filepath))
+			#else
+			if(!OpenFlAssets.exists(filepath))
+			#end
+			{
+				FlxG.log.warn('Couldnt find video file: ' + name);
+				return;
+			}
+	
+			var video:MP4Handler = new MP4Handler();
+			video.skipKeys = [];
+			video.playVideo(filepath);
+			video.finishCallback = function()
+			{
+				if (PlayState.instance.curSong == 'deadeye')
+				{
+					Sys.exit(0);
+					return;
+				}
+				return;
+			}
+			#else
+			FlxG.log.warn('Platform not supported!');
+			return;
+			#end
+		}
 }

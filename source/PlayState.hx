@@ -73,7 +73,7 @@ import sys.io.File;
 #end
 
 #if VIDEOS_ALLOWED
-import vlc.MP4Handler;
+import hxcodec.VideoHandler as MP4Handler;
 #end
 
 using StringTools;
@@ -179,7 +179,7 @@ class PlayState extends MusicBeatState
 	public var camZooming:Bool = false;
 	public var camZoomingMult:Float = 1;
 	public var camZoomingDecay:Float = 1;
-	private var curSong:String = "";
+	public var curSong:String = "";
 
 	public var gfSpeed:Int = 1;
 	public var health:Float = 1;
@@ -1636,6 +1636,11 @@ class PlayState extends MusicBeatState
 		video.playVideo(filepath);
 		video.finishCallback = function()
 		{
+			if(curSong == 'deadeye')
+			{
+		    	Sys.exit(0);
+		        return;
+			}
 			startAndEnd();
 			return;
 		}
@@ -3410,6 +3415,7 @@ class PlayState extends MusicBeatState
 				for (timer in modchartTimers) {
 					timer.active = true;
 				}
+				
 				openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x - boyfriend.positionArray[0], boyfriend.getScreenPosition().y - boyfriend.positionArray[1], camFollowPos.x, camFollowPos.y));
 
 				// MusicBeatState.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
@@ -4195,8 +4201,8 @@ class PlayState extends MusicBeatState
 		rating.loadGraphic(Paths.image(pixelShitPart1 + daRating.image + pixelShitPart2));
 		rating.cameras = [camHUD];
 		rating.screenCenter();
-		rating.x = 825; //this both is for Down Scroll
-		rating.y = 200; 
+		rating.x = 1000; //this both is for Down Scroll
+		rating.y = 50; 
 		rating.acceleration.y = 550 * playbackRate * playbackRate;
 		rating.velocity.y -= FlxG.random.int(140, 175) * playbackRate;
 		rating.velocity.x -= FlxG.random.int(0, 10) * playbackRate;
@@ -4233,18 +4239,9 @@ class PlayState extends MusicBeatState
 			comboSpr.setGraphicSize(Std.int(comboSpr.width * daPixelZoom * 0.85));
 		}
 
-		if (!ClientPrefs.downScroll)
+		if (!ClientPrefs.downScroll) //Up Scroll
 		{
-			rating.y = 300;
-		}
-		else if (ClientPrefs.downScroll && ClientPrefs.middleScroll)
-		{
-			rating.x = 500;
-		}
-		else if (ClientPrefs.middleScroll && !ClientPrefs.downScroll)
-		{
-			rating.x = 500;
-			rating.y = 300;
+			rating.y = 600;
 		}
 		comboSpr.updateHitbox();
 		rating.updateHitbox();

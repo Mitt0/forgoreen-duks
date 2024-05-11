@@ -550,6 +550,10 @@ class FreeplayState extends MusicBeatState
 	    		difficultyDesc.text = "ASTER WILL KILL YOU!!!";
 	    	    difficultyDesc.color = 0xFFCC0000;
 			}
+
+			if (songs[curSelected].songName == "deadeye"){ //DeadEye
+				difficultyDesc.text = "[DATA MIGHT BE CORRUPTED, PLAY?]";
+			}
 		}
 	}
 
