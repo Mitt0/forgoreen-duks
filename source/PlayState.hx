@@ -4688,6 +4688,14 @@ class PlayState extends MusicBeatState
 		StrumPlayAnim(true, Std.int(Math.abs(note.noteData)), time);
 		note.hitByOpponent = true;
 
+		if (health > 0.023)
+		{
+			if (storyDifficulty == 1)
+				health -= 0.0115;
+			else if (storyDifficulty >= 2)
+				health -= 0.023;
+		}
+
 		callOnLuas('opponentNoteHit', [notes.members.indexOf(note), Math.abs(note.noteData), note.noteType, note.isSustainNote]);
 
 		if (!note.isSustainNote)
@@ -5163,6 +5171,28 @@ class PlayState extends MusicBeatState
 		lastBeatHit = curBeat;
 
 		setOnLuas('curBeat', curBeat); //DAWGG?????
+
+		var angleshit:Int = -1; // From original lua script
+		if (health > 0.4)
+		{
+			iconP1.angle = angleshit * 12;
+			iconP2.angle = angleshit * -12;
+		}
+		else if (health > 1.6)
+		{
+			iconP1.angle = angleshit * 12;
+			iconP2.angle = angleshit * 12;
+		}
+		else
+		{
+			iconP1.angle = angleshit * -12;
+			iconP2.angle = angleshit * -12;
+		}
+
+		FlxTween.tween(iconP1, {angle: 0}, 1, {ease:FlxEase.elasticOut});
+		FlxTween.tween(iconP2, {angle: 0}, 1, {ease:FlxEase.elasticOut});
+
+		
 		callOnLuas('onBeatHit', []);
 	}
 
