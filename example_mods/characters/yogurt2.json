@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				70,
+				0
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "yogurtjazz left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				70,
+				0
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "yogurtjazz right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				70,
+				0
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "yogurtjazz down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				70,
+				0
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "yogurtjazz up",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [
+				70,
+				0
+			],
+			"anim": "idle",
+			"fps": 12,
+			"name": "yogurtjazz idle",
+			"indices": []
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/yogurtjazz",
+	"position": [
+		-70,
+		-360
+	],
+	"healthicon": "yogurt",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		74,
+		255
+	],
+	"camera_position": [
+		-80,
+		250
+	],
+	"sing_duration": 4,
+	"scale": 0.8
+}

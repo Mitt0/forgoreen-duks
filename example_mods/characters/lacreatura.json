@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-12,
+				1
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "lacreatura left"
+		},
+		{
+			"offsets": [
+				50,
+				-20
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "lacreatura down"
+		},
+		{
+			"offsets": [
+				5,
+				1
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "lacreatura up"
+		},
+		{
+			"offsets": [
+				-10,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "lacreatura right"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 3,
+			"anim": "idle",
+			"loop": true,
+			"name": "lacreatura idle"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/lacreatura",
+	"position": [
+		200,
+		0
+	],
+	"healthicon": "grimnue",
+	"flip_x": false,
+	"healthbar_colors": [
+		0,
+		0,
+		0
+	],
+	"camera_position": [
+		-170,
+		70
+	],
+	"sing_duration": 6.1,
+	"scale": 1
+}

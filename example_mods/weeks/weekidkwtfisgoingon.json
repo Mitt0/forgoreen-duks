@@ -1,0 +1,41 @@
+{
+	"storyName": "We Duskin Tonight",
+	"difficulties": "Easy, Casual, Hard, Lunatic",
+	"hideFreeplay": false,
+	"weekBackground": "stage",
+	"weekBefore": "tutorial",
+	"freeplayColor": [
+		146,
+		113,
+		253
+	],
+	"startUnlocked": true,
+	"hideStoryMode": true,
+	"songs": [
+		[
+			"last-departure",
+			"eiki",
+			[
+				0,
+				100,
+				0
+			]
+		],
+		[
+			"dead-wonderland",
+			"bf",
+			[
+				146,
+				113,
+				253
+			]
+		]
+	],
+	"weekCharacters": [
+		"dad",
+		"bf",
+		"gf"
+	],
+	"hiddenUntilUnlocked": false,
+	"weekName": "Duskin"
+}

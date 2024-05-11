@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				-5,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "boy idle0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				5,
+				4
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "boy left0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-50,
+				-31
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "boy down0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-6,
+				-13
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "boy up0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				32,
+				23
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "boy right0",
+			"indices": []
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/boy",
+	"position": [
+		0,
+		150
+	],
+	"healthicon": "boynew",
+	"flip_x": true,
+	"healthbar_colors": [
+		86,
+		255,
+		255
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 4,
+	"scale": 1
+}

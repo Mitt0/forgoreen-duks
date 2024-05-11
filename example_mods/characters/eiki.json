@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "eiki down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				10
+			],
+			"anim": "singUP",
+			"fps": 25,
+			"name": "eiki up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "eiki idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				10,
+				0
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "eiki left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-30,
+				10
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "eiki right",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/eiki",
+	"position": [
+		-60,
+		-150
+	],
+	"healthicon": "eiki",
+	"flip_x": false,
+	"healthbar_colors": [
+		29,
+		146,
+		98
+	],
+	"camera_position": [
+		80,
+		50
+	],
+	"sing_duration": 4,
+	"scale": 1
+}

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="yogurtgirl.png"><SubTexture name="yogurtgirl idle0000" x="2454" y="786" width="576" height="781" frameX="-376" frameY="-476" frameWidth="1250" frameHeight="1500" />
+<SubTexture name="yogurtgirl idle0001" x="2093" y="1870" width="638" height="739" frameX="-345" frameY="-518" frameWidth="1250" frameHeight="1500" />
+<SubTexture name="yogurtgirl down0000" x="1614" y="2636" width="840" height="632" frameX="-239" frameY="-674" frameWidth="1250" frameHeight="1500" />
+<SubTexture name="yogurtgirl down0001" x="782" y="2636" width="832" height="634" frameX="-243" frameY="-672" frameWidth="1250" frameHeight="1500" />
+<SubTexture name="yogurtgirl down0002" x="0" y="2636" width="782" height="653" frameX="-268" frameY="-653" frameWidth="1250" frameHeight="1500" />
+<SubTexture name="yogurtgirl down0003" x="3142" y="0" width="694" height="688" frameX="-312" frameY="-617" frameWidth="1250" frameHeight="1500" />
+<SubTexture name="yogurtgirl left0000" x="1393" y="1870" width="700" height="747" frameX="-162" frameY="-529" frameWidth="1250" frameHeight="1500" />
+<SubTexture name="yogurtgirl left0001" x="693" y="1870" width="700" height="748" frameX="-163" frameY="-528" frameWidth="1250" frameHeight="1500" />
+<SubTexture name="yogurtgirl left0002" x="0" y="1870" width="693" height="766" frameX="-189" frameY="-510" frameWidth="1250" frameHeight="1500" />
+<SubTexture name="yogurtgirl left0003" x="2454" y="0" width="688" height="786" frameX="-218" frameY="-490" frameWidth="1250" frameHeight="1500" />
+<SubTexture name="yogurtgirl right0000" x="1325" y="1021" width="664" height="833" frameX="-446" frameY="-426" frameWidth="1250" frameHeight="1500" />
+<SubTexture name="yogurtgirl right0001" x="661" y="1021" width="664" height="835" frameX="-444" frameY="-424" frameWidth="1250" frameHeight="1500" />
+<SubTexture name="yogurtgirl right0002" x="0" y="1021" width="661" height="849" frameX="-431" frameY="-410" frameWidth="1250" frameHeight="1500" />
+<SubTexture name="yogurtgirl right0003" x="1796" y="0" width="658" height="860" frameX="-419" frameY="-399" frameWidth="1250" frameHeight="1500" />
+<SubTexture name="yogurtgirl up0000" x="0" y="0" width="408" height="1021" frameX="-431" frameY="-271" frameWidth="1250" frameHeight="1500" />
+<SubTexture name="yogurtgirl up0001" x="408" y="0" width="414" height="1015" frameX="-428" frameY="-277" frameWidth="1250" frameHeight="1500" />
+<SubTexture name="yogurtgirl up0002" x="822" y="0" width="456" height="986" frameX="-407" frameY="-306" frameWidth="1250" frameHeight="1500" />
+<SubTexture name="yogurtgirl up0003" x="1278" y="0" width="518" height="946" frameX="-376" frameY="-346" frameWidth="1250" frameHeight="1500" />
+</TextureAtlas>

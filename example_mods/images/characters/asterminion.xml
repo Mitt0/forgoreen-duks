@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="asterminion.png"><SubTexture name="asterminion idle0000" x="268" y="0" width="152" height="132" frameX="-95" frameY="-83" frameWidth="350" frameHeight="300" />
+<SubTexture name="asterminion idle0001" x="0" y="0" width="134" height="143" frameX="-115" frameY="-81" frameWidth="350" frameHeight="300" />
+<SubTexture name="asterminion idle0002" x="152" y="143" width="110" height="99" frameX="-119" frameY="-94" frameWidth="350" frameHeight="300" />
+<SubTexture name="asterminion idle0003" x="134" y="0" width="134" height="143" frameX="-105" frameY="-81" frameWidth="350" frameHeight="300" />
+<SubTexture name="asterminion idle0004" x="0" y="143" width="152" height="132" frameX="-95" frameY="-83" frameWidth="350" frameHeight="300" />
+</TextureAtlas>

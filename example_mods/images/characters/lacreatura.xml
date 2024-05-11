@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="lacreatura.png"><SubTexture name="lacreatura idle0000" x="920" y="0" width="275" height="445" frameX="-163" frameY="-127" frameWidth="600" frameHeight="600" />
+<SubTexture name="lacreatura idle0001" x="0" y="508" width="275" height="442" frameX="-162" frameY="-130" frameWidth="600" frameHeight="600" />
+<SubTexture name="lacreatura down0000" x="439" y="1372" width="443" height="355" frameX="-80" frameY="-238" frameWidth="600" frameHeight="600" />
+<SubTexture name="lacreatura down0001" x="0" y="1372" width="439" height="357" frameX="-82" frameY="-236" frameWidth="600" frameHeight="600" />
+<SubTexture name="lacreatura down0002" x="1528" y="0" width="418" height="364" frameX="-92" frameY="-229" frameWidth="600" frameHeight="600" />
+<SubTexture name="lacreatura down0003" x="731" y="950" width="407" height="374" frameX="-97" frameY="-219" frameWidth="600" frameHeight="600" />
+<SubTexture name="lacreatura left0000" x="1195" y="426" width="333" height="425" frameX="-37" frameY="-138" frameWidth="600" frameHeight="600" />
+<SubTexture name="lacreatura left0001" x="1195" y="0" width="333" height="426" frameX="-38" frameY="-137" frameWidth="600" frameHeight="600" />
+<SubTexture name="lacreatura left0002" x="616" y="508" width="338" height="436" frameX="-47" frameY="-127" frameWidth="600" frameHeight="600" />
+<SubTexture name="lacreatura left0003" x="275" y="508" width="341" height="442" frameX="-54" frameY="-121" frameWidth="600" frameHeight="600" />
+<SubTexture name="lacreatura right0000" x="482" y="950" width="249" height="409" frameX="-281" frameY="-157" frameWidth="600" frameHeight="600" />
+<SubTexture name="lacreatura right0001" x="235" y="950" width="247" height="411" frameX="-281" frameY="-155" frameWidth="600" frameHeight="600" />
+<SubTexture name="lacreatura right0002" x="0" y="950" width="235" height="422" frameX="-280" frameY="-144" frameWidth="600" frameHeight="600" />
+<SubTexture name="lacreatura right0003" x="954" y="508" width="228" height="431" frameX="-270" frameY="-135" frameWidth="600" frameHeight="600" />
+<SubTexture name="lacreatura up0000" x="0" y="0" width="220" height="508" frameX="-187" frameY="-55" frameWidth="600" frameHeight="600" />
+<SubTexture name="lacreatura up0001" x="220" y="0" width="222" height="506" frameX="-186" frameY="-57" frameWidth="600" frameHeight="600" />
+<SubTexture name="lacreatura up0002" x="442" y="0" width="231" height="495" frameX="-176" frameY="-78" frameWidth="600" frameHeight="600" />
+<SubTexture name="lacreatura up0003" x="673" y="0" width="247" height="487" frameX="-165" frameY="-91" frameWidth="600" frameHeight="600" />
+</TextureAtlas>
